@@ -27,5 +27,6 @@ console.log(cb(3,3,add())); // Prints "TypeError: callback is not a function" be
 
 console.log(cb(3,"hh",add));// Prints "Result from the two numbers: 3+hh=3hh" where it concatenates instead of adding ie 3 is type coerced into a string
 
-
-  
+function mul(n1, n2){
+    return n1 * n2
+  };
