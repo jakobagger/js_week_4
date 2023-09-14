@@ -23,10 +23,14 @@ console.log( cb(3,3,add) ); // "Result from the two numbers: 6", takes in a refe
 
 console.log( cb(4,3,sub) ); // "Result from the two numbers: 4+3=1" because it calls the sub() function instead. Looks weird because the string is hardcoded to make sense for the add function but the cb function actually works with any nyumber of functions manipulating two numbers.
 
-console.log(cb(3,3,add())); // Prints "TypeError: callback is not a function" because we're calling the cuntion in the arguemnt instead of passing a reference to the function (ie without ())
+//console.log(cb(3,3,add())); // Prints "TypeError: callback is not a function" because we're calling the cuntion in the arguemnt instead of passing a reference to the function (ie without ())
 
 console.log(cb(3,"hh",add));// Prints "Result from the two numbers: 3+hh=3hh" where it concatenates instead of adding ie 3 is type coerced into a string
 
 function mul(n1, n2){
     return n1 * n2
   };
+
+  console.log(cb(2,2,mul)); //using cb() to call the mul() function
+
+  console.log(cb(9,3, (a, b)=> a/b )); //anonymous function as callback to cb()
