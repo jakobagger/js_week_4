@@ -9,5 +9,29 @@
     <div id="d1" style="width: 100px;margin: 1px;">&nbsp;</div>
     <div id="d2" style="width: 100px;margin: 1px;">&nbsp;</div>
     <div id="d3" style="width: 100px;margin: 1px;">&nbsp;</div>
+    <button id="butt">DUTCH THIS</button>
+    <a href="/">GO BACK</a>
+
+    <h3>Reflections</h3>
+    <p>
+        We're manipulating the DOM ie. the locally received data for the page. 
+        Because we grabbed all divs we can iterate through them by index, but since they have 
+        IDs we could also grab them individually directly and skip making them into a nodeList. 
+    </p>
+
+    <script>
+        const divs = document.querySelectorAll("div");
+
+        for(let i=0; i<3; i++){
+            divs[i].style.backgroundColor = "orange"
+        }
+
+        document.getElementById("butt").onclick = ()=> {
+    //divs[0].style.backgroundColor = "black"
+    document.querySelector("#d1").style.backgroundColor = "red"
+    divs[1].style.backgroundColor = "white"
+    divs[2].style.backgroundColor = "blue"
+  }
+    </script>
 </body>
 </html>
