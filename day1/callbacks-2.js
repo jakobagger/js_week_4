@@ -32,6 +32,7 @@ const cars = [
   const newCars = cars.filter((car) => car.year > 1999).forEach(car => console.log(car));
 
   console.log("volvos:")
-  
-  const volvos = cars.filter(car => car.make == "volvo").forEach(car => console.log(car));
+  const volvos = cars.filter((car) => car.make === "Volvo").forEach(car => console.log(car));
 
+  console.log("Cheap cars:")
+  const cheapCars = cars.filter((car) => car.price < 5000).forEach(car => console.log(car));
