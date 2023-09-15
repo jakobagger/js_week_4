@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 Exercise 2</title>
+    <style>
+        .my-div {width: 25px; height: 25px;background-color:red; margin:1px;}
+    </style>     
+</head>
+<body>
+    
+    <h1>Exercise 2</h1>
+
+    <div id="outer">
+        <div id="d1" class="my-div"></div>
+        <div id="d2" class="my-div"></div>
+        <div id="d3" class="my-div"></div>
+        <div id="d4" class="my-div"></div>
+        <div id="d5" class="my-div"></div>
+        <div id="d6" class="my-div"></div>
+        <div id="d7" class="my-div"></div>
+        <div id="d8" class="my-div"></div>
+        <div id="d9" class="my-div"></div>
+        <div id="d10" class="my-div"></div>
+    </div>
+    
+    <p id="output"></p>
+
+    <h3>Reflections</h3>
+    <p>Event bubbling means that after running any handlers on the element that first triggered it,<br>
+         the event will 'bubble' upwards, that is travel up/out to its parent element, then its parent etc all the way to the document as a whole.<br>
+         On each new element it will trigger any eventhandlers there. We can use this to use a single eventhandler on the outer div to write messages from each of the ten my-divs.
+        </p>
+
+    <script>
+        
+        /* Exercise 2a: 
+        document.getElementById("d1").addEventListener("click", (event) => {
+            console.log("Hi from "+event.target.id);
+        })
+
+        document.getElementById("d2").addEventListener("click", () => {
+            console.log("Hi from d2!");
+        })*/
+
+        document.getElementById("outer").addEventListener("click", (event) => {
+            console.log("Hi from "+event.target.id);
+            document.getElementById("output").innerText = "Hi from "+event.target.id;
+        })
+
+    </script>
+
+</body>
+</html>
