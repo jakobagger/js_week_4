@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 Exercise 3</title>
+</head>
+<body>
+    <h1>Exercise 3</h1>
+
+    <div id="names"></div>
+
+    <form>
+        <input type="text" id="name-input">
+        <button id="add-name-btn">Add name</button>
+        <button id="rmf-btn">Remove first name</button>
+        <button id="rml-btn">Remove last name</button>
+    </form>
+
+    <h3>Reflections</h3>
+    <div style="border: 1px solid black; border-radius: 5px;padding: 1em;">
+        <ul>
+            <li>To prevent the page from relodading I block the default behaviour(submit) of the input element with <code>preventDefault()</code>. <br>
+                Since we're manipulating the DOM only, not doing this would mean any change to the list <br>
+                 would show up for a second the vanish when the page is retrieved again.</code></li>
+            
+                 <li>innerHTML is vulnerable to XSS or cross site scripting attacks. In a lot of cases there are alternatives to using it by using DOM manipulation methods instead (eg. appendChild()) <br>
+            If we have to use it, filtering/sanitizing input data is important, for example with a library like DOMPurify (according to ChatGPT...). I haven't had time to actually do it yet though.</li>
+            
+            <li>I experimented with adding or removing only single elements from the list using removeChild() but ended up doing it this way where I use <br>
+            the built in array methods on <code>names</code> and then rebuild the list by calling createList() again with the new array. Think it looks cleaner</li>
+        </ul>
+    </div>
+
+    <a href="/">GO BACK</a>
+    <script>
+        const names = ["Jordell", "Morg", "Griff", "Borak", "Hack","Skitter", "Hubris" ];
+
+        function createList(){ 
+            document.getElementById("names").innerHTML = `<ul>${names.map(name => `<li>${name}</li>`).join('')}</ul>`;
+        }
+
+        createList();
+
+        document.getElementById("add-name-btn").onclick = (event) => {
+            event.preventDefault();
+            const newName = document.getElementById("name-input").value;
+            names.push(newName);
+            createList();
+        }
+
+        document.getElementById("rmf-btn").onclick = (event) => {
+            event.preventDefault();
+            names.shift();
+            createList();
+        }
+
+        document.getElementById("rml-btn").onclick = (event) => {
+            event.preventDefault();
+            names.pop();
+            createList();
+        }
+
+    </script>
+
+</body>
+</html>
