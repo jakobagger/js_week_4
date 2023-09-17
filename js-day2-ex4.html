@@ -17,8 +17,12 @@
 
       <h3>Reflections</h3>
 <div style="border: 1px solid black; border-radius: 5px;padding: 1em;">
-  Reflect on when you would use a <b>select-element</b>. For a few (perhaps max 10) or many more possible options?<br>
-  Explain in words that clearly show that you understand what you did to solve this problem
+  For the UX a drop-down menu isn't great if you have too many options. 10 might be a nice max but lots of places seem to use it for stuff like countries where there's a lot more.<br>
+  
+  To make this drop-down (select html element) we iterate through the cars array with the forEach method. On each array element we first use the DOM method createElement() to create a new option element <br>
+  Then we assign the option the value of the array element and uppercase the text to show up in the dropdown. Lastly but most importantly we use appendChild() from the selector element to add the new html-element, the option, as a child of the "car-selector" element. <br>
+
+  After the forEach() has run its arrow function on each element in the array we add an event listener to to the select element that reacts to change events by outputting the value of the currently selected option to the "car-make" div.
 </div>
 
       
