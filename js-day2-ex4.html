@@ -10,16 +10,35 @@
     <h1>Exercise 4</h1>
 
     <select id="car-selector">
-        <!-- Options will be populated by JavaScript -->
+    
       </select>
       <h2>Selected Brand</h2>
       <h4 id="car-make"></h4>
+
+      <h3>Reflections</h3>
+<div style="border: 1px solid black; border-radius: 5px;padding: 1em;">
+  Reflect on when you would use a <b>select-element</b>. For a few (perhaps max 10) or many more possible options?<br>
+  Explain in words that clearly show that you understand what you did to solve this problem
+</div>
+
       
       <a href="/">GO BACK</a>
 
       <script>
-      const cars = ["Ford", "WW", "Toyota", "Volvo"]; //Assume this was fetched from the backend
-      //TODO 
+      const cars = ["Ford", "WW", "Toyota", "Volvo"]; 
+      const selector = document.getElementById("car-selector");
+
+      cars.forEach(make => {
+        const opt = document.createElement('option');
+        opt.value = make;
+        opt.textContent = make.toUpperCase();
+        selector.appendChild(opt);
+      });
+      
+      selector.addEventListener('change', (event) => {
+    document.getElementById("car-make").innerText = event.target.value
+    });
+      
       </script>
       
 </body>
