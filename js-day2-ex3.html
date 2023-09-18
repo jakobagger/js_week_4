@@ -25,10 +25,14 @@
                  would show up for a second the vanish when the page is retrieved again.</code></li>
             
                  <li>innerHTML is vulnerable to XSS or cross site scripting attacks. In a lot of cases there are alternatives to using it by using DOM manipulation methods instead (eg. appendChild()) <br>
-            If we have to use it, filtering/sanitizing input data is important, for example with a library like DOMPurify (according to ChatGPT...). I haven't had time to actually do it yet though.</li>
+            If we have to use it, filtering/sanitizing input data is important,<br>
+             ie. escaping the special characters like <,> and so on and just interpreting them as a string instead. Can be done with the DOMPUrify library pretty simply. <br>
+            </li>
             
             <li>I experimented with adding or removing only single elements from the list using removeChild() but ended up doing it this way where I use <br>
-            the built in array methods on <code>names</code> and then rebuild the list by calling createList() again with the new array. Think it looks cleaner</li>
+            the built in array methods on <code>names</code> and then rebuild the list by calling createList() again with the new array. This way data lives only in the array and doesn't have to be updated two separate places, and the code is simpler. <br>
+            It is technically worse performance-wise than direct DOM-manipulation because we're needlessly reloading the whole array but this is pretty negligible for our purposes. On the other hand, deirect Dom manipulation would also be mostly protected from XSS automatically, but if we use the other strategy it's very important to sanitize data.    
+        </li>
         </ul>
     </div>
 
