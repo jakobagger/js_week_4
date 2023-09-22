@@ -18,7 +18,6 @@ document.getElementById("svg2").onclick = (evt) => {
       country.style.fill = "steelblue"
       
       if (isoCode.length > 2) {
-        console.log("Not a country!")
         return
       }
 
