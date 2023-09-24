@@ -12,7 +12,9 @@ function getUserByID(){
       })
       .then(user => {
         document.getElementById("single-user").innerText = JSON.stringify(user, null, 3)
-        document.getElementById("single-user").style.display = "block"})
+        document.getElementById("single-user").style.display = "block"
+        document.getElementById("users-table").style.display = "none"
+      })
       .catch(e => console.log(e))
 }
 
@@ -30,5 +32,6 @@ function getAllUsers(){
     console.log(userTable)
     document.getElementById("user-table-body").innerHTML = userTable
     document.getElementById("users-table").style.display = "block"
+    document.getElementById("single-user").style.display = "none"
   }).catch(e => console.log(e))
 }
